@@ -1,7 +1,7 @@
 # Event Loop
 <img  src="./assets/eventloop.png"  alt="Event Loop">
 
-# The Need for the Event Loop in JavaScript
+## The Need for the Event Loop in JavaScript
 
 1. **Non-blocking Asynchronous Operations**: JavaScript is single-threaded, meaning it can only execute one task at a time. Asynchronous operations, such as fetching data from a server, reading files, or handling user interactions, can take some time to complete. The event loop allows JavaScript to handle these operations without blocking the main execution thread. Instead of waiting for an operation to finish, JavaScript can move on to execute other tasks, making the application more responsive.
 
@@ -9,11 +9,11 @@
 
 3. **Efficient Resource Utilization**: By handling asynchronous operations asynchronously, the event loop helps optimize resource utilization. Instead of idly waiting for I/O operations to complete, JavaScript can execute other tasks or handle additional incoming requests. This efficient use of resources improves overall performance and scalability, especially in server-side applications.
 
-# Tasks Processed in the Event Loop
+## Tasks Processed in the Event Loop
 
 1. **Asynchronous Callbacks**: Callback functions from asynchronous operations such as `setTimeout`, `setInterval`, `fetch API`, `AJAX requests`, `event handlers` (e.g., click, mouseover), `promises`, and `I/O operations` are queued in the event loop. Once their associated tasks are completed, these callback functions are moved from the event queue to the call stack for execution.
 
-# Tasks Remaining in the Call Stack
+## Tasks Remaining in the Call Stack
 
 1. **Synchronous Code**: Synchronous code executes directly in the call stack, in the order it appears in the code. This includes function calls, variable declarations, assignments, arithmetic operations, loops, and any other synchronous tasks.
 
@@ -23,7 +23,7 @@
 
 4. **Recursive Function Calls**: Recursive function calls result in multiple instances of the function's execution context being pushed onto the call stack. These instances remain in the call stack until the base case is reached and the recursive calls are resolved.
 
-# Execution Order: Call Stack vs. Task Queue
+## What is the Execution Order? Call Stack vs. Task Queue
 
 In JavaScript's event-driven architecture, the call stack takes precedence over the task queue. Here's how the execution order works:
 
@@ -46,3 +46,26 @@ In JavaScript's event-driven architecture, the call stack takes precedence over 
 5. This mechanism ensures that synchronous code is executed without interruption and that asynchronous tasks are executed in the correct order.
 
 In summary, the call stack is processed first, and once it's empty, tasks from the task queue are processed by moving them onto the call stack. This ensures proper handling of both synchronous and asynchronous operations in JavaScript.
+
+## How many queues are there in the JavaScript event loop?
+
+There are typically two main queues in the JavaScript event loop:
+
+1. **Task Queue (Callback Queue)**
+2. **Microtask Queue (Job Queue)**
+
+## Why are there two queues in the event loop?
+
+Having two queues in the event loop serves different purposes and allows for efficient handling of asynchronous tasks:
+
+- **Task Queue**: Used for scheduling tasks/callbacks that are executed after a certain delay or as a result of asynchronous operations such as `setTimeout`, `setInterval`, I/O operations, and event handlers. Tasks in this queue are processed after the call stack becomes empty.
+  
+- **Microtask Queue**: Holds high-priority tasks called microtasks that need to be executed as soon as possible, typically before the next rendering cycle or task from the Task Queue is processed. Microtasks include promise callbacks (`then`, `catch`, and `finally` handlers), mutation observer callbacks, and certain browser API callbacks.
+
+## What is the execution order in the event loop?
+
+The execution order in the event loop follows a specific sequence:
+
+1. Synchronous code is executed directly in the call stack, in the order it appears in the code.
+2. Tasks in the Task Queue are processed after the call stack becomes empty, allowing JavaScript to handle asynchronous operations without blocking the main thread.
+3. Microtasks in the Microtask Queue are executed immediately after the current synchronous task finishes and before the next task from the Task Queue is processed. This ensures higher-priority tasks are handled promptly, contributing to smoother user experience and avoiding potential race conditions or inconsistencies.
