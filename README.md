@@ -3,7 +3,7 @@
 [MDN WebDocs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [JavaScript Info](https://javascript.info/)
 
-<img src="./assets/memory_org.svg" alt="Alternative text" width="100" height="100">
+<img src="./assets/memory_org.svg" alt="Runtime in javascirpt">
 
 
 ## Call Stack
