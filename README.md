@@ -36,3 +36,21 @@ Whenever a function is called, a new frame, is added to the top of the call stac
 
 - this is not the case with Global Variables,
   they are stored in Heap which is a accessible from any where in the code, all function can use it
+
+```javascript
+let global_var = "it's in heap";
+
+function outerFunction() {
+  let var1, var2;
+  innerFunction();
+  //console.log(inner_var);
+  //ReferenceError: inner_var is not defined
+}
+
+function innerFunction() {
+  let inner_var = "it's in frame";
+  console.log(inner_var) // Accessible
+  console.log(global_var) // Accessible
+}
+
+outerFunction();
