@@ -54,3 +54,5 @@ function innerFunction() {
 }
 
 outerFunction();
+
+<img src="./assets/image.png" alt="Runtime in javascirpt">
