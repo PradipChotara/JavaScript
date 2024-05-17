@@ -3,7 +3,8 @@
 [MDN WebDocs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [JavaScript Info](https://javascript.info/)
 
-![Alternative text](/home/pradip/Desktop/the_javascript_runtime_environment_example.svg)
+<img src="./assets/memory_org.svg" alt="Alternative text" width="100" height="100">
+
 
 ## Call Stack
 Whenever a function is called, a new frame, is added to the top of the call stack. When the function finishes executing, its stack frame is removed from the stack.
